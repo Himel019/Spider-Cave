@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\Spider Scripts\Spider Jumper\SpiderJumper.cs" />
      <Compile Include="Assets\Scripts\Spider Scripts\Spider Shooter\SpiderBullet.cs" />
      <Compile Include="Assets\Scripts\Spider Scripts\Spider Shooter\SpiderShooter.cs" />
+     <Compile Include="Assets\Scripts\Spider Scripts\Spider Walker\SpiderWalker.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Program Files/2019.4.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

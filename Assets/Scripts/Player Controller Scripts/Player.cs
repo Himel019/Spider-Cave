@@ -66,6 +66,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void BouncePlayerWithBouncer(float force) {
+        if(isGrounded) {
+            isGrounded = false;
+            myRigidbody.AddForce(new Vector2(myRigidbody.velocity.x, force));
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "Ground") {
             myAnimator.SetBool("Jump", false);

@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
 
     private bool isGrounded = true;
+    private bool moveLeft;
+    private bool moveRight;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,47 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        PlayerMovementJoystick();
+    }
+
+    public void SetMoveLeft(bool moveLeft) {
+        this.moveLeft = moveLeft;
+        this.moveRight = !moveLeft;
+    }
+
+    public void StopMoving() {
+        this.moveLeft = false;
+        this.moveRight = false;
+    }
+
+    private void PlayerMovementJoystick() {
+        if(isGrounded){
+            if(moveRight) {
+                Vector2 horizontalMove = new Vector2((1f) * speed, myRigidbody.velocity.y);
+                myRigidbody.velocity = horizontalMove;
+                mySpriteRenderer.flipX = false;
+                myAnimator.SetBool("Run", true);
+
+                if(speed < maxSpeed) {
+                speed += 0.01f;
+                } else {
+                    speed = maxSpeed;
+                }
+            } else if(moveLeft) {
+                Vector2 horizontalMove = new Vector2((-1f) * speed, myRigidbody.velocity.y);
+                myRigidbody.velocity = horizontalMove;
+                mySpriteRenderer.flipX = true;
+                myAnimator.SetBool("Run", true);
+
+                if(speed < maxSpeed) {
+                speed += 0.01f;
+                } else {
+                    speed = maxSpeed;
+                }
+            }
+        } else {
+            myAnimator.SetBool("Run", false);
+        }
     }
 
     private void PlayerMovement() {
@@ -66,6 +109,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Jump() {
+        if(isGrounded){
+            isGrounded = false;
+            myRigidbody.AddForce(new Vector2(myRigidbody.velocity.x, jumpForce));
+            myAnimator.SetBool("Jump", true);
+        }
+    }
+
     public void BouncePlayerWithBouncer(float force) {
         if(isGrounded) {
             isGrounded = false;
@@ -74,7 +125,7 @@ public class Player : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Ground") {
+        if(other.gameObject.tag == "Ground" || other.gameObject.tag == "Platforms") {
             myAnimator.SetBool("Jump", false);
             isGrounded = true;
         }

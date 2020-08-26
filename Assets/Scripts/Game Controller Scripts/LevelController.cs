@@ -8,10 +8,11 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     private GameObject[] lockPanel;
 
-    void Awake() {
+    void Start() {
         for(int i = 0; i < GameManager.instance.GetTotalGameLevels(); i++) {
             if(GameManager.instance.IsLevelUnlocked(i)) {
                 lockPanel[i].SetActive(false);
+                //Debug.Log("Running");
             }
         }
     }

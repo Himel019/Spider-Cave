@@ -9,10 +9,12 @@ public class SpiderJumper : MonoBehaviour
 
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
+    private GameplayController gameplayController;
 
     void Awake() {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        gameplayController = GameObject.Find("Gameplay Controller").GetComponent<GameplayController>();
     }
 
     // Start is called before the first frame update
@@ -40,6 +42,7 @@ public class SpiderJumper : MonoBehaviour
 
         if(other.tag == "Player") {
             Destroy(other.gameObject);
+            gameplayController.PlayerDied();
         }
     }
 }

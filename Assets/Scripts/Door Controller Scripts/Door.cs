@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
 
     private Animator myAnimator;
     private BoxCollider2D myBoxCollider;
+    private GameplayController gameplayController;
 
     private int collectablesCount;
 
@@ -15,6 +16,7 @@ public class Door : MonoBehaviour
         MakeInstance();
         myAnimator = GetComponent<Animator> ();
         myBoxCollider = GetComponent<BoxCollider2D> ();
+        gameplayController = GameObject.Find("Gameplay Controller").GetComponent<GameplayController>();
     }
 
     public void DecrementCollectables() {
@@ -39,7 +41,7 @@ public class Door : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
-            Debug.Log("Game Finished");
+            gameplayController.LevelComplete();
         }
     }
 

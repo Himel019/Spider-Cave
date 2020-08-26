@@ -41,12 +41,14 @@
      <Compile Include="Assets\Scripts\Collectables Scripts\Collectables.cs" />
      <Compile Include="Assets\Scripts\Collectables Scripts\HealthCollectables.cs" />
      <Compile Include="Assets\Scripts\Door Controller Scripts\Door.cs" />
+     <Compile Include="Assets\Scripts\Game Controller Scripts\GameCompleteMenuController.cs" />
      <Compile Include="Assets\Scripts\Game Controller Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Game Controller Scripts\Gameplay Controller Scripts\AirTimer.cs" />
      <Compile Include="Assets\Scripts\Game Controller Scripts\Gameplay Controller Scripts\GameplayController.cs" />
      <Compile Include="Assets\Scripts\Game Controller Scripts\Gameplay Controller Scripts\LevelTimer.cs" />
      <Compile Include="Assets\Scripts\Game Controller Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\Game Controller Scripts\MainMenuController.cs" />
+     <Compile Include="Assets\Scripts\Joystick Movement Scripts\JoystickMovement.cs" />
      <Compile Include="Assets\Scripts\Player Controller Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\Spider Scripts\Spider Jumper\SpiderJumper.cs" />
      <Compile Include="Assets\Scripts\Spider Scripts\Spider Shooter\SpiderBullet.cs" />

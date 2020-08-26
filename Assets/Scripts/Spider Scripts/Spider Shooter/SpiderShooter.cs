@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +6,13 @@ public class SpiderShooter : MonoBehaviour
 {
     [SerializeField]
     private GameObject bullet;
+    private GameplayController gameplayController;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Attack());
+        gameplayController = GameObject.Find("Gameplay Controller").GetComponent<GameplayController>();
     }
 
     private IEnumerator Attack() {
@@ -22,6 +24,7 @@ public class SpiderShooter : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
             Destroy(other.gameObject);
+            gameplayController.PlayerDied();
         }
     }
 }

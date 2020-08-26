@@ -7,17 +7,25 @@ using UnityEngine;
 public class GameplayController : MonoBehaviour
 {
     [SerializeField]
+    private int currentLevelNum;
+
+    [SerializeField]
     private GameObject pausePanel;
     [SerializeField]
     private Button resumeGame;
     [SerializeField]
     private Button restartGame;
+    [SerializeField]
+    private Button nextLevelButton;
 
     public void PauseGame() {
-        Time.timeScale = 0f;
-        pausePanel.SetActive(true);
-        resumeGame.gameObject.SetActive(true);
-        restartGame.gameObject.SetActive(false);
+        if(!pausePanel.activeInHierarchy) {
+            Time.timeScale = 0f;
+            pausePanel.SetActive(true);
+            resumeGame.gameObject.SetActive(true);
+            restartGame.gameObject.SetActive(false);
+            nextLevelButton.gameObject.SetActive(false);
+        }
     }
 
     public void ResumeGame() {
@@ -27,12 +35,12 @@ public class GameplayController : MonoBehaviour
 
     public void RestartGame() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("3_Gameplay");
+        GameManager.instance.ReloadLevel();
     }
 
     public void GoToMenu() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("1_MainMenu");
+        GameManager.instance.GoToMenuScene();
     }
 
     public void PlayerDied() {
@@ -40,5 +48,30 @@ public class GameplayController : MonoBehaviour
         pausePanel.SetActive(true);
         resumeGame.gameObject.SetActive(false);
         restartGame.gameObject.SetActive(true);
+        nextLevelButton.gameObject.SetActive(false);
+    }
+
+    public void LevelComplete() {
+        Time.timeScale = 0f;
+
+        if(currentLevelNum == GameManager.instance.GetTotalGameLevels()) {
+            GameManager.instance.GoToGameCompleteScene();
+        } else if(currentLevelNum < GameManager.instance.GetTotalGameLevels()) {
+            GameManager.instance.UnlockNextLevel(SceneManager.GetActiveScene().buildIndex-2);
+
+            pausePanel.SetActive(true);
+            resumeGame.gameObject.SetActive(false);
+            restartGame.gameObject.SetActive(false);
+            nextLevelButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void GoToNextLevel() {
+        Time.timeScale = 1f;
+        if(currentLevelNum < GameManager.instance.GetTotalGameLevels()) {
+            GameManager.instance.LoadNextLevel();
+        } else {
+            GameManager.instance.GoToGameCompleteScene();
+        }
     }    
 }

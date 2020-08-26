@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
     private int totalGameLevels;
     
     void Awake() {
-        PlayerPrefs.DeleteAll();
+        MakeInstance();
+
+        //PlayerPrefs.DeleteAll();
 
         if(!PlayerPrefs.HasKey("GameStartedFortheFirstTime")){
             for(int i = 0; i < totalGameLevels; i++) {
@@ -23,12 +25,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Level 0", 1);
             PlayerPrefs.SetInt("GameStartedFortheFirstTime", 1);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        MakeInstance();
     }
 
     private void MakeInstance() {
@@ -49,7 +45,9 @@ public class GameManager : MonoBehaviour
     public void LoadNextLevel() {
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        if(IsLevelUnlocked(currentSceneIndex - 1)){
+            SceneManager.LoadScene(currentSceneIndex + 1);
+        }
     }
 
     public void ReloadLevel() {
@@ -71,17 +69,20 @@ public class GameManager : MonoBehaviour
     }
 
     public void UnlockNextLevel(int levelIndex) {
-        string levelName = "Level " + levelIndex;
+        string levelName = "Level " + (levelIndex + 1);
 
         PlayerPrefs.SetInt(levelName, 1);
+        Debug.Log(levelName + " Unlocked");
     }
 
     public bool IsLevelUnlocked(int levelIndex) {
         string levelName = "Level " + levelIndex;
+        //Debug.Log(levelName);
 
         if(PlayerPrefs.GetInt(levelName) == 0) {
             return false;
         } else {
+            //Debug.Log("working");
             return true;
         }
     }

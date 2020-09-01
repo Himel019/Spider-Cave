@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7079339090163336192}
   - component: {fileID: 7079339090163336207}
   - component: {fileID: 7079339090163336206}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spider Jumper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1679113373
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 4044661903906601218, guid: b3ae00f5aae907645a6ca0396abbd3ee,
     type: 3}

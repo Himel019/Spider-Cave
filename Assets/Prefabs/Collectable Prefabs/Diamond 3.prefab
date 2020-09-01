@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3475623206883742067}
   - component: {fileID: 3509117020009548182}
   - component: {fileID: 252654750233736802}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Diamond 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -405347893
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -7824734652087929343, guid: a953980cd02a6384fbfdccc2bfb1cedb,
     type: 3}

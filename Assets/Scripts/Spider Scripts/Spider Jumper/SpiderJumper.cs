@@ -6,6 +6,10 @@ public class SpiderJumper : MonoBehaviour
 {
     [SerializeField]
     private float jumpForce = 300f;
+    [SerializeField]
+    private float minJumpForce = 17000;
+    [SerializeField]
+    private float maxJumpForce = 19000;
 
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
@@ -26,7 +30,7 @@ public class SpiderJumper : MonoBehaviour
     private IEnumerator Attack() {
         yield return new WaitForSeconds(Random.Range(2, 7));
 
-        jumpForce = Random.Range(17000, 19000);
+        jumpForce = Random.Range(minJumpForce, maxJumpForce);
 
         myRigidbody.AddForce(new Vector2(0, jumpForce));
         myAnimator.SetBool("Attack", true);

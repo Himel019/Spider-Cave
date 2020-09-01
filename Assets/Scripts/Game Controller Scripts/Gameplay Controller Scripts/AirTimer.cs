@@ -7,6 +7,7 @@ public class AirTimer : MonoBehaviour
 {
     private Slider slider;
     private GameObject player;
+    private GameplayController gameplayController;
 
     [SerializeField]
     private float air = 10f;
@@ -17,10 +18,11 @@ public class AirTimer : MonoBehaviour
     void Awake()
     {
         GetReferences();
+        gameplayController = GameObject.Find("Gameplay Controller").GetComponent<GameplayController>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(player == null) {
             return;
@@ -31,6 +33,7 @@ public class AirTimer : MonoBehaviour
             slider.value = air;
         } else {
             Destroy(player);
+            gameplayController.PlayerDied();
         }
     }
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2143969166714819877}
   - component: {fileID: 2143969166714819878}
   - component: {fileID: 2143969166714819879}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Air Collectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}

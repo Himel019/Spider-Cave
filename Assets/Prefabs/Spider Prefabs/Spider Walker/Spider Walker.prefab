@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869144483193904619}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: End Position
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1869144484390646052}
   - component: {fileID: 1869144484390646043}
   - component: {fileID: 1869144484390646048}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spider Walker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1679113373
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -3326045311322848897, guid: a6b6a01c785fc18418463847beba0342,
     type: 3}

@@ -52,31 +52,30 @@ public class Player : MonoBehaviour
     }
 
     private void PlayerMovementJoystick() {
-        if(isGrounded){
-            if(moveRight) {
-                Vector2 horizontalMove = new Vector2((1f) * speed, myRigidbody.velocity.y);
-                myRigidbody.velocity = horizontalMove;
-                mySpriteRenderer.flipX = false;
-                myAnimator.SetBool("Run", true);
+        if(moveRight) {
+            Vector2 horizontalMove = new Vector2((1f) * speed, myRigidbody.velocity.y);
+            myRigidbody.velocity = horizontalMove;
+            mySpriteRenderer.flipX = false;
+            myAnimator.SetBool("Run", true);
 
-                if(speed < maxSpeed) {
-                speed += 0.01f;
-                } else {
-                    speed = maxSpeed;
-                }
-            } else if(moveLeft) {
-                Vector2 horizontalMove = new Vector2((-1f) * speed, myRigidbody.velocity.y);
-                myRigidbody.velocity = horizontalMove;
-                mySpriteRenderer.flipX = true;
-                myAnimator.SetBool("Run", true);
-
-                if(speed < maxSpeed) {
-                speed += 0.01f;
-                } else {
-                    speed = maxSpeed;
-                }
+            if(speed < maxSpeed) {
+            speed += 0.01f;
+            } else {
+                speed = maxSpeed;
             }
-        } else {
+        } else if(moveLeft) {
+            Vector2 horizontalMove = new Vector2((-1f) * speed, myRigidbody.velocity.y);
+            myRigidbody.velocity = horizontalMove;
+            mySpriteRenderer.flipX = true;
+            myAnimator.SetBool("Run", true);
+
+            if(speed < maxSpeed) {
+            speed += 0.01f;
+            } else {
+                speed = maxSpeed;
+            }
+        }
+        else {
             myAnimator.SetBool("Run", false);
         }
     }
@@ -124,10 +123,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Ground" || other.gameObject.tag == "Platforms") {
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "Ground" || other.tag == "Platforms") {
             myAnimator.SetBool("Jump", false);
             isGrounded = true;
         }
-    }
+    } 
 }

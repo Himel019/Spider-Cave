@@ -13464,7 +13464,7 @@ PrefabInstance:
     - target: {fileID: 4797970430629765108, guid: 060c6502d2394764481240efb1bb0471,
         type: 3}
       propertyPath: m_Name
-      value: Timer Collectable (1)
+      value: Timer Collectable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 060c6502d2394764481240efb1bb0471, type: 3}
@@ -19229,7 +19229,7 @@ PrefabInstance:
     - target: {fileID: 2143969166714819872, guid: 73d087d340e64f040bfed33bc540fab0,
         type: 3}
       propertyPath: m_Name
-      value: Air Collectable (1)
+      value: Air Collectable
       objectReference: {fileID: 0}
     - target: {fileID: 2143969166714819876, guid: 73d087d340e64f040bfed33bc540fab0,
         type: 3}
